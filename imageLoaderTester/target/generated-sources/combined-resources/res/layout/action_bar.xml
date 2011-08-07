@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+	xmlns:a="http://schemas.android.com/apk/res/android">
+	<LinearLayout
+		a:layout_width="fill_parent"
+		a:layout_height="40dp"
+		a:background="@drawable/bg_header"
+		a:gravity="center_vertical">
+		<TextView
+			a:id="@+id/new_activity"
+			a:layout_width="wrap_content"
+			a:layout_height="60dp"
+			a:layout_weight="5"
+			a:textColor="#FFFFFF"
+			a:textStyle="bold"
+			a:textSize="14dp"
+			a:text="ImageLoader"
+			a:gravity="center"
+			a:paddingLeft="5dp" />
+		<Button
+			a:id="@+id/clear_cache_btn" 
+			a:layout_width="wrap_content"
+			a:layout_height="60dp"
+			a:layout_weight="5"
+			a:text="clear cache" />
+		<Button
+			a:id="@+id/clear_sd_btn" 
+			a:layout_width="wrap_content"
+			a:layout_height="60dp"
+			a:layout_weight="5"
+			a:text="clear sd" />
+	</LinearLayout>
+</merge>
