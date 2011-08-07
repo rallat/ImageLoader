@@ -13,9 +13,9 @@ import com.novoda.lib.imageloader.util.BitmapUtil;
 import com.novoda.lib.imageloader.util.FileUtil;
 
 public class BaseImageLoader implements ImageLoader {
-	
+
 	private static final String TAG = "ImageLoader";
-	
+
 	private BitmapUtil bitmapUtil = new BitmapUtil();
 	private FileUtil fileUtil;
 	private CacheManager photosStack;
@@ -23,21 +23,23 @@ public class BaseImageLoader implements ImageLoader {
 	private int imgHeight;
 	private int imgWidth;
 
-	public BaseImageLoader(Context context, int imageWidth, int imageHeight, int defaultImageId, String cacheDirName) {
+	public BaseImageLoader(Context context, int imageWidth, int imageHeight,
+			int defaultImageId, String cacheDirName) {
 		this.imgHeight = imageHeight;
 		this.imgWidth = imageWidth;
 		this.fileUtil = new FileUtil(cacheDirName);
-		this.photosStack = new CacheManager(this, createCache(), 
-				bitmapUtil.decodeImageResourceAndScaleBitmap(context, defaultImageId, imgWidth, imageHeight));
+		this.photosStack = new CacheManager(this, createCache(),
+				bitmapUtil.decodeImageResourceAndScaleBitmap(context,
+						defaultImageId, imgWidth, imageHeight));
 		this.cacheDir = fileUtil.prepareCacheDir(context);
 	}
-	
+
 	@Override
 	public void displayImage(String url, Context activity, ImageView imageView) {
 		try {
-			if(photosStack.hasImageInCache(url)) {
+			if (photosStack.hasImageInCache(url)) {
 				Bitmap b = photosStack.getImageFromCache(url);
-				if(b != null) {
+				if (b != null) {
 					imageView.setImageBitmap(b);
 					return;
 				}
@@ -47,7 +49,7 @@ public class BaseImageLoader implements ImageLoader {
 			Log.e(TAG, t.getMessage(), t);
 		}
 	}
-	
+
 	@Override
 	public Bitmap getBitmap(String url) {
 		return getBitmap(url, false);
@@ -58,9 +60,10 @@ public class BaseImageLoader implements ImageLoader {
 		if (url != null && url.length() != 0) {
 			String filename = String.valueOf(url.hashCode());
 			File f = new File(cacheDir, filename);
-			if(f.exists()) {
-				Bitmap b = bitmapUtil.decodeFileAndScale(f, scale, imgWidth, imgHeight);
-				if(b != null) {				
+			if (f.exists()) {
+				Bitmap b = bitmapUtil.decodeFileAndScale(f, scale, imgWidth,
+						imgHeight);
+				if (b != null) {
 					return b;
 				}
 			}
@@ -69,19 +72,19 @@ public class BaseImageLoader implements ImageLoader {
 		}
 		return null;
 	}
-	
+
 	@Override
 	public void cleanFileCache() {
 		fileUtil.deleteDir(cacheDir);
 	}
-	
+
 	@Override
 	public void cleanCache() {
 		photosStack.resetCache(createCache());
 	}
-	
+
 	protected ImageCache createCache() {
-		 return new SoftMapCache();
+		return new SoftMapCache();
 	}
-	
+
 }
