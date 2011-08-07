@@ -6,6 +6,7 @@
 		<groupId>com.novoda</groupId>
 		<artifactId>team</artifactId>
 		<version>0.1.0</version>
+		<relativePath></relativePath>
 	</parent>
 	<groupId>com.novoda.lib</groupId>
 	<artifactId>imageloader</artifactId>

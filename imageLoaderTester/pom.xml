@@ -6,6 +6,7 @@
 		<groupId>com.novoda</groupId>
 		<artifactId>android</artifactId>
 		<version>0.1.1</version>
+		<relativePath></relativePath>
 	</parent>
 	<groupId>com.novoda.lib</groupId>
 	<artifactId>imageloadertester</artifactId>
