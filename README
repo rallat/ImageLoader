@@ -2,6 +2,31 @@ ImageLoader component
 - imageLoader contains a java maven based project
 - imageLoaderTest mvn android based project to test imageLoader
 
-For client project you only need to include the image loader jar
+For client project that need to include the image loader you just need the jar
+you can find the jar at : https://github.com/novoda/public-mvn-repo 
 
-I will soon provide more instructions on how to add the jar build or add the maven dependency directly 
+If you are using maven you need to define the repo and then the dependency
+<repositories>
+  <repository>
+    <id>public-mvn-repo-snapshots</id>
+    <url>https://github.com/novoda/public-mvn-repo/raw/master/snapshots</url>
+  </repository>
+  <repository>
+    <id>public-mvn-repo-releases</id>
+    <url>https://github.com/novoda/public-mvn-repo/raw/master/releases</url>
+  </repository>
+</repositories>
+
+<dependency>
+  <groupId>com.novoda.lib</groupId>
+  <artifactId>imageloader</artifactId>
+  <version>0.1.0</version>
+</dependency>
+
+Working with eclipse
+- execute the following command in the root of the project : mvn clean eclipse:clean eclipse:eclipse
+- from eclipse select File > Import > Existing Projects into workspace > select the root of the project (should import both of them) 
+- for the android imageLoaderTester you need three more steps:
+   - remove the folder target/generated-sources/r from the classpath
+   - add gen folder to the classpath
+   - on properties of the project select android tools > fix android setup 
