@@ -1,0 +1,7 @@
+ImageLoader component
+- imageLoader contains a java maven based project
+- imageLoaderTest mvn android based project to test imageLoader
+
+For client project you only need to include the image loader jar
+
+I will soon provide more instructions on how to add the jar build or add the maven dependency directly 
