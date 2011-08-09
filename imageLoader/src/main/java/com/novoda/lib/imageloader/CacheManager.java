@@ -16,8 +16,8 @@ public class CacheManager {
 	private ImageCache cache;
 	private Bitmap defaultImage;
 	private PhotosLoader thread;
-	private Stack<Image> stack = new Stack<Image>();
-	private ImageLoader imageLoader;
+	private Stack<Image> stack;
+	private ImageManager imageLoader;
 	
 	public static class Image {
 		public String url;
@@ -29,10 +29,11 @@ public class CacheManager {
 		}
 	}
 	
-	public CacheManager(ImageLoader imageLoader, ImageCache cache, Bitmap defaultImage) {
+	public CacheManager(ImageManager imageLoader, ImageCache cache, Bitmap defaultImage) {
 		this.imageLoader = imageLoader;
 		this.cache = cache;
 		this.defaultImage = defaultImage;
+		this.stack = new Stack<Image>();
 		thread = new PhotosLoader();
 		thread.setPriority(Thread.NORM_PRIORITY-1);
 	}
@@ -108,7 +109,7 @@ public class CacheManager {
 						a.runOnUiThread(bd);
 					}
 				} catch (Throwable e) {
-					Log.e(TAG, "Throwable : " + e.getMessage());
+					Log.e(TAG, "Throwable : " + e.getMessage(), e);
 				}
 				
 			}

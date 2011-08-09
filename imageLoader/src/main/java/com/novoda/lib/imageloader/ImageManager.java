@@ -4,16 +4,18 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.widget.ImageView;
 
-public interface ImageLoader {
+public interface ImageManager {
 
-	void displayImage(String url, Context activity, ImageView imageView);
+	void load(String url, Context activity, ImageView imageView);
 
 	Bitmap getBitmap(String url, boolean scale);
 
 	Bitmap getBitmap(String url);
 
-	void cleanFileCache();
+	void deleteFileCache(Context context);
 
 	void cleanCache();
+
+	void reduceFileCache(Context context);
 
 }

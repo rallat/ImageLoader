@@ -1,4 +1,4 @@
-package com.novoda.imageloadertest.provider;
+package com.novoda.lib.imageloadertester.provider;
 
 import java.io.InputStreamReader;
 import java.util.ArrayList;

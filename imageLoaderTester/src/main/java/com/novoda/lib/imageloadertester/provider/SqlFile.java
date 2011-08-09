@@ -1,4 +1,4 @@
-package com.novoda.imageloadertest.provider;
+package com.novoda.lib.imageloadertester.provider;
 
 import java.io.BufferedReader;
 import java.io.File;

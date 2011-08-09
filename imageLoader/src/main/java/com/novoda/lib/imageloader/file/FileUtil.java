@@ -1,4 +1,4 @@
-package com.novoda.lib.imageloader.util;
+package com.novoda.lib.imageloader.file;
 
 import java.io.Closeable;
 import java.io.File;
@@ -8,19 +8,12 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
 
-import android.content.Context;
 import android.util.Log;
 
 public class FileUtil {
 	
 	private static final String TAG = "ImageLoader";
-	private String cacheDirPath;
 	
-	public FileUtil(String cacheDirPath) {
-		this.cacheDirPath = cacheDirPath;
-	}
-	
-
 	public void retrieveImage(String url, File f) {
 		InputStream is = null;
 		OutputStream os = null;
@@ -30,9 +23,9 @@ public class FileUtil {
 			copyStream(is, os);
 			os.close();
 		} catch (FileNotFoundException fnfe) {
-			Log.e(TAG, "Unknown Exception while getting the image" + fnfe.getMessage());
+			Log.e(TAG, "Unknown Exception while getting the image" + fnfe.getMessage(), fnfe);
 		} catch (Exception ex){
-			Log.e(TAG, "Unknown Exception while getting the image " + ex.getMessage());
+			Log.e(TAG, "Unknown Exception while getting the image " + ex.getMessage(), ex);
 		} finally {
 			closeSilently(is);
 			closeSilently(os);
@@ -65,28 +58,23 @@ public class FileUtil {
 		}
 	}
 	
-	public boolean deleteDir(File dir) {
-        if (dir.isDirectory()) {
-            String[] children = dir.list();
+	public boolean deleteFileCache(String cacheDirFullPath) {
+		return reduceFileCache(cacheDirFullPath, -1);
+    }
+	
+	public boolean reduceFileCache(String cacheDirFullPath, long expirationPeriod) {
+		File cacheDir = new File(cacheDirFullPath);
+        if (cacheDir.isDirectory()) {
+            String[] children = cacheDir.list();
+            long lastModifiedThreashold = System.currentTimeMillis() - expirationPeriod;
             for (int i = 0; i < children.length; i++) {
-            	File f = new File(dir, children[i]);
-            	f.delete();
+            	File f = new File(cacheDir, children[i]);
+            	if(f.lastModified() < lastModifiedThreashold) {
+	            	f.delete();
+            	}
             }
         }
         return true;
     }
-	
-	public File prepareCacheDir(Context context) {
-		File cacheDir = null;
-		if (android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED)){
-			cacheDir = new File(android.os.Environment.getExternalStorageDirectory(), cacheDirPath);
-		} else{
-			cacheDir = context.getCacheDir();
-		}
-		if(!cacheDir.exists()){
-			cacheDir.mkdir();
-		}
-		return cacheDir;
-	}
 	
 }

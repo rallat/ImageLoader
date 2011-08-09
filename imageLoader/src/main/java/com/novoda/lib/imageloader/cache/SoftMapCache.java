@@ -39,5 +39,4 @@ public class SoftMapCache implements ImageCache {
 		cache.clear();
 	}
 
-	
 }

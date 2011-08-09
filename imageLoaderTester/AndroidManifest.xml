@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:a="http://schemas.android.com/apk/res/android"
-      package="com.novoda.imageloadertest"
+      package="com.novoda.lib.imageloadertester"
       a:versionCode="1"
-      a:versionName="1.0">
+      a:versionName="1.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-sdk a:minSdkVersion="8" />
 
     <application a:icon="@drawable/icon" a:label="@string/app_name" a:name=".ImageLoaderTesterApplication">
@@ -16,6 +16,15 @@
         <provider
          	a:name=".provider.ImageLoaderTestProvider"
          	a:authorities="com.novoda.imageloadertest" />
+
+		<receiver a:name="com.novoda.lib.imageloader.receiver.CacheCleaner">
+			<intent-filter>
+                <action a:name="com.novoda.lib.imageloader.action.REDUCE_CACHE" />
+            </intent-filter>
+            <intent-filter>
+                <action a:name="com.novoda.lib.imageloader.action.CLEAN_CACHE" />
+            </intent-filter>
+		</receiver>
 
     </application>
     

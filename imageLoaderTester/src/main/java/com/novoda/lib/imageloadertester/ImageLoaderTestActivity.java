@@ -1,4 +1,4 @@
-package com.novoda.imageloadertest;
+package com.novoda.lib.imageloadertester;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -12,9 +12,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.SimpleCursorAdapter.ViewBinder;
-import android.widget.TextView;
 
-import com.novoda.lib.imageloader.ImageLoader;
+import com.novoda.lib.imageloader.ImageManager;
 
 public class ImageLoaderTestActivity extends BaseListActivity {
 	
@@ -23,7 +22,7 @@ public class ImageLoaderTestActivity extends BaseListActivity {
 	private static final Uri URI = Uri.parse("content://com.novoda.imageloadertest/image");
 	
 	//TODO add this to your class
-	private ImageLoader imageLoader;
+	private ImageManager imageLoader;
 	//
 	
     @Override
@@ -44,27 +43,35 @@ public class ImageLoaderTestActivity extends BaseListActivity {
 		lv.setAdapter(adapter);
 		
 		
-		TextView tv = (TextView)findViewById(R.id.new_activity);
-		tv.setOnClickListener(new OnClickListener() {
+		Button newActivity = (Button)findViewById(R.id.new_activity_btn);
+		newActivity.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				startActivity(new Intent(ImageLoaderTestActivity.this, ImageLoaderTestActivity.class));
 			}
 		});
 		
-		Button b = (Button)findViewById(R.id.clear_cache_btn);
-		b.setOnClickListener(new OnClickListener() {
+		Button clearCache = (Button)findViewById(R.id.clear_cache_btn);
+		clearCache.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				imageLoader.cleanCache();
 			}
 		});
 		
-		Button b1 = (Button)findViewById(R.id.clear_sd_btn);
-		b1.setOnClickListener(new OnClickListener() {
+		Button clearFileCache = (Button)findViewById(R.id.clear_sd_btn);
+		clearFileCache.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				imageLoader.cleanFileCache();
+				imageLoader.deleteFileCache(getApplicationContext());
+			}
+		});
+		
+		Button reduceFileCache = (Button)findViewById(R.id.reduce_sd_btn);
+		reduceFileCache.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				imageLoader.reduceFileCache(getApplicationContext());
 			}
 		});
     }
@@ -77,7 +84,7 @@ public class ImageLoaderTestActivity extends BaseListActivity {
 					((ImageView) view).setTag(cursor.getString(columnIndex));
 					
 					//TODO add this to your class
-		            imageLoader.displayImage(cursor.getString(columnIndex), 
+		            imageLoader.load(cursor.getString(columnIndex), 
 		            		ImageLoaderTestActivity.this, (ImageView) view);
 		            //
 				} catch(Exception e) {

@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello World, ImageLoaderTestActivity!</string>
-    <string name="app_name">ImageLoaderTest</string>
+    <string name="app_name">ImageLoaderTester</string>
 </resources>

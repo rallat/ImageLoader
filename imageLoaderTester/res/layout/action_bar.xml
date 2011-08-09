@@ -6,17 +6,12 @@
 		a:layout_height="40dp"
 		a:background="@drawable/bg_header"
 		a:gravity="center_vertical">
-		<TextView
-			a:id="@+id/new_activity"
+		<Button
+			a:id="@+id/new_activity_btn" 
 			a:layout_width="wrap_content"
 			a:layout_height="60dp"
 			a:layout_weight="5"
-			a:textColor="#FFFFFF"
-			a:textStyle="bold"
-			a:textSize="14dp"
-			a:text="ImageLoader"
-			a:gravity="center"
-			a:paddingLeft="5dp" />
+			a:text="activity" />
 		<Button
 			a:id="@+id/clear_cache_btn" 
 			a:layout_width="wrap_content"
@@ -29,5 +24,11 @@
 			a:layout_height="60dp"
 			a:layout_weight="5"
 			a:text="clear sd" />
+		<Button
+			a:id="@+id/reduce_sd_btn" 
+			a:layout_width="wrap_content"
+			a:layout_height="60dp"
+			a:layout_weight="5"
+			a:text="reduce sd" />
 	</LinearLayout>
 </merge>

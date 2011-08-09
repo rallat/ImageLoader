@@ -10,9 +10,9 @@
 	</parent>
 	<groupId>com.novoda.lib</groupId>
 	<artifactId>imageloader</artifactId>
-	<version>0.1.0</version>
+	<version>0.1.1</version>
 	<packaging>jar</packaging>
-	<name>ImageLoader</name>
+	<name>Image Loader</name>
 	<description>Image Loader</description>
 
 	<repositories>
@@ -41,6 +41,25 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		 <dependency>
+        	<groupId>com.pivotallabs</groupId>
+        	<artifactId>robolectric</artifactId>
+        	<version>1.0-RC1</version>
+        	<scope>test</scope>
+     	</dependency>
+    	<dependency>
+    	 	<groupId>org.mockito</groupId>
+		  	<artifactId>mockito-core</artifactId>  
+		  	<version>1.9.0-rc1</version> 
+		  	<scope>test</scope>
+  		</dependency>
+  		<dependency>
+    		<groupId>commons-io</groupId>
+    		<artifactId>commons-io</artifactId>
+    		<version>2.0.1</version>
+    		<scope>test</scope>
 		</dependency>
 	</dependencies>
 </project>
