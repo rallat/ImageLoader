@@ -22,12 +22,12 @@ public class BaseImageLoader implements ImageManager {
 	private CacheManager cacheManager;
 	private Settings settings;
 
-	public BaseImageLoader(Settings settings) {
+	public BaseImageLoader(Context context, Settings settings) {
 		this.bitmapUtil = new BitmapUtil();
 		this.settings = settings;
 		this.cacheManager = new CacheManager(this, createCache(),
-				bitmapUtil.decodeImageResourceAndScaleBitmap(settings));
-		sendCacheCleanUpBroadcast(settings.getContext(), settings.getExpirationPeriod());
+				bitmapUtil.decodeImageResourceAndScaleBitmap(context, settings));
+		sendCacheCleanUpBroadcast(context, settings.getExpirationPeriod());
 	}
 
 	@Override
@@ -53,7 +53,7 @@ public class BaseImageLoader implements ImageManager {
 
 	@Override
 	public Bitmap getBitmap(String url, boolean scale) {
-		if (url != null && url.length() != 0) {
+		if (url != null && url.length() >= 0) {
 			String filename = String.valueOf(url.hashCode());
 			File f = new File(settings.getCacheDir(), filename);
 			if (f.exists()) {

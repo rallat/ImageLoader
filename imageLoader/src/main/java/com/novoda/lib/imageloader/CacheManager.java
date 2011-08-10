@@ -4,6 +4,7 @@ import java.util.Stack;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ImageView;
 
@@ -39,8 +40,11 @@ public class CacheManager {
 	}
 
 	public void push(Image p) {
-		pushOnStack(p);
 		p.imageView.setImageBitmap(defaultImage);
+		if(TextUtils.isEmpty(p.url)) {
+			return;
+		}
+		pushOnStack(p);
 		if(thread.getState() == Thread.State.NEW) {
 			thread.start();
 		} else {
@@ -68,7 +72,7 @@ public class CacheManager {
 	
 	private synchronized void clean(Image p) {
 		for (int j = 0; j < stack.size(); j++) {
-			if (stack.get(j).url.equals(p.url)) {
+			if (stack.get(j).url != null && stack.get(j).url.equals(p.url)) {
 				stack.remove(j);
 				j--;
 			}
@@ -103,7 +107,7 @@ public class CacheManager {
 					} else {
 						cache.put(image.url, bmp);
 					}
-					if(((String)image.imageView.getTag()).equals(image.url)){
+					if(image.imageView.getTag() != null && ((String)image.imageView.getTag()).equals(image.url)){
 						BitmapDisplayer bd = new BitmapDisplayer(bmp, image.imageView);
 						Activity a = (Activity)image.imageView.getContext();
 						a.runOnUiThread(bd);

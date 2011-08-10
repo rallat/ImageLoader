@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
@@ -16,6 +17,7 @@ public class BitmapUtil {
 	
 	public Bitmap decodeFileAndScale(File f, boolean scale, Settings settings){
 		try {
+			f.setLastModified(System.currentTimeMillis());
 			Bitmap unscaledBitmap = BitmapFactory.decodeStream(new FileInputStream(f));
             return scaleBitmap(unscaledBitmap, settings.getImageWidth(), settings.getImageHeight());
 		} catch (FileNotFoundException e) {
@@ -43,8 +45,8 @@ public class BitmapUtil {
         return scaledBitmap;
 	}
 	
-	public Bitmap decodeImageResourceAndScaleBitmap(Settings settings){
-        return scaleBitmap(settings.getDefaultBitmap(), settings.getImageWidth(), settings.getImageHeight());
+	public Bitmap decodeImageResourceAndScaleBitmap(Context context, Settings settings){
+        return scaleBitmap(settings.getDefaultBitmap(context), settings.getImageWidth(), settings.getImageHeight());
 	}
 
 }

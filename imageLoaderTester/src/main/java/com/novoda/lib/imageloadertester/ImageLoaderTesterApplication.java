@@ -1,6 +1,9 @@
 package com.novoda.lib.imageloadertester;
 
 import android.app.Application;
+import android.content.Context;
+import android.view.Display;
+import android.view.WindowManager;
 
 import com.novoda.lib.imageloader.BaseImageLoader;
 import com.novoda.lib.imageloader.ImageManager;
@@ -15,8 +18,10 @@ public class ImageLoaderTesterApplication extends Application {
     public void onCreate() {
         super.onCreate();
         //TODO add this to your classs
-        Settings settings = new Settings(this, 150, 150, R.drawable.bg_img_loading);
-        imageLoader = new BaseImageLoader(settings);
+        Display display = ((WindowManager)getSystemService(Context.WINDOW_SERVICE))
+                .getDefaultDisplay();
+        Settings settings = new Settings(this, display.getHeight(), display.getWidth(), R.drawable.bg_img_loading);
+        imageLoader = new BaseImageLoader(this, settings);
         //
     }
 
