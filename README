@@ -1,6 +1,8 @@
 ImageLoader component
 - imageLoader contains a java maven based project
 - imageLoaderTest mvn android based project to test imageLoader
+- imageLoaderDemoTest mvn android based project with robotium test
+- imageLoaderMonkeyRunner some example that take a snapshot using monkey runner
 
 For client project that need to include the image loader you just need the jar
 you can find the jar at : https://github.com/novoda/public-mvn-repo 
