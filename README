@@ -24,7 +24,8 @@ If you are using maven you need to define the repo and then the dependency
 </dependency>
 
 Working with eclipse
-- execute the following command in the root of the project : mvn clean eclipse:clean eclipse:eclipse
+*** REQUIREMENTS - maven eclipse integration (m2e) - http://download.eclipse.org/technology/m2e/releases *** 
+- execute the following command in the root of the project : mvn clean eclipse:clean eclipse:eclipse install
 - from eclipse select File > Import > Existing Projects into workspace > select the root of the project (should import both of them) 
 - for the android imageLoaderTester you need three more steps:
    - remove the folder target/generated-sources/r from the classpath
