@@ -12,6 +12,7 @@
 	<modules>
 		<module>imageLoader</module>
 		<module>imageLoaderTester</module>
+		<module>imageLoaderDemoTests</module>
 	</modules>
 
 </project>
