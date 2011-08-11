@@ -13,6 +13,7 @@
 		<module>imageLoader</module>
 		<module>imageLoaderTester</module>
 		<module>imageLoaderDemoTests</module>
+	        <!--	<module>imageLoaderTesterMonkeyRunner</module> -->
 	</modules>
 
 </project>
