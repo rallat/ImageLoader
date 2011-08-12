@@ -26,7 +26,14 @@ If you are using maven you need to define the repo and then the dependency
 </dependency>
 
 Working with eclipse
-*** REQUIREMENTS - maven eclipse integration (m2e) - http://download.eclipse.org/technology/m2e/releases *** 
+REQUIREMENTS 
+- better to use eclipse 3.7 and maven 3.0.3
+- Download from eclipse marketplace the maven eclipse integration (m2e) [alternatively go to http://download.eclipse.org/technology/m2e/releases]
+
+- import existing maven project and select the root of the project
+
+
+Eclipsify is not longer necessary but if you want these are the steps
 - execute the following command in the root of the project : mvn clean eclipse:clean eclipse:eclipse install
 - from eclipse select File > Import > Existing Projects into workspace > select the root of the project (should import both of them) 
 - for the android imageLoaderTester you need three more steps:
