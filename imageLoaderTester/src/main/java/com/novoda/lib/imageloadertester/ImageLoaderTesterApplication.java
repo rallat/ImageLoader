@@ -18,8 +18,7 @@ public class ImageLoaderTesterApplication extends Application {
     public void onCreate() {
         super.onCreate();
         //TODO add this to your classs
-        Display display = ((WindowManager)getSystemService(Context.WINDOW_SERVICE))
-                .getDefaultDisplay();
+        Display display = ((WindowManager)getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
         Settings settings = new Settings(this, display.getHeight(), display.getWidth(), R.drawable.bg_img_loading);
         imageLoader = new BaseImageLoader(this, settings);
         //

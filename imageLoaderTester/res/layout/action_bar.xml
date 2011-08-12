@@ -11,24 +11,24 @@
 			a:layout_width="wrap_content"
 			a:layout_height="60dp"
 			a:layout_weight="5"
-			a:text="activity" />
+			a:text="@string/btn_activity" />
 		<Button
 			a:id="@+id/clear_cache_btn" 
 			a:layout_width="wrap_content"
 			a:layout_height="60dp"
 			a:layout_weight="5"
-			a:text="clear cache" />
+			a:text="@string/btn_clear_cache" />
 		<Button
 			a:id="@+id/clear_sd_btn" 
 			a:layout_width="wrap_content"
 			a:layout_height="60dp"
 			a:layout_weight="5"
-			a:text="clear sd" />
+			a:text="@string/btn_clear_sd" />
 		<Button
 			a:id="@+id/reduce_sd_btn" 
 			a:layout_width="wrap_content"
 			a:layout_height="60dp"
 			a:layout_weight="5"
-			a:text="reduce sd" />
+			a:text="@string/btn_reduce_sd" />
 	</LinearLayout>
 </merge>

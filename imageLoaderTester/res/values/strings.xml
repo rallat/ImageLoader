@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">ImageLoaderTester</string>
+    <string name="btn_activity">activity</string>
+    <string name="btn_clear_cache">clear cache</string>
+    <string name="btn_clear_sd">clear sd</string>
+    <string name="btn_reduce_sd">reduce sd</string>
 </resources>
