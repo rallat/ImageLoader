@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>com.novoda</groupId>
 		<artifactId>android</artifactId>
-		<version>0.1.1</version>
+		<version>0.1.2</version>
 		<relativePath></relativePath>
 	</parent>
 	<groupId>com.novoda.lib</groupId>
 	<artifactId>imageloadertester</artifactId>
-	<version>0.1.2-SNAPSHOT</version>
+	<version>0.1.1</version>
 	<packaging>apk</packaging>
 	<name>Image Loader Tester</name>
 	<description>Image Loader Tester</description>
@@ -36,7 +36,7 @@
 		<dependency>
 			<groupId>com.novoda.lib</groupId>
 			<artifactId>imageloader</artifactId>
-			<version>0.1.2-SNAPSHOT</version>
+			<version>0.1.1</version>
 		</dependency>
 	</dependencies>
 

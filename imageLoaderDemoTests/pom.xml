@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>com.novoda</groupId>
 		<artifactId>robotium</artifactId>
-		<version>0.1.0</version>
+		<version>0.1.1</version>
 		<relativePath></relativePath>
 	</parent>
 	<groupId>com.novoda.lib</groupId>
 	<artifactId>imageloaderdemotests</artifactId>
-	<version>0.1.2-SNAPSHOT</version>
+	<version>0.1.1</version>
 	<packaging>apk</packaging>
 	<name>Image Loader Demo Tests</name>
 
