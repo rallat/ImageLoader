@@ -4,6 +4,7 @@
       a:versionCode="1"
       a:versionName="1.0" xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-sdk a:minSdkVersion="8" />
+    <uses-sdk a:targetSdkVersion="8" />
 
     <application a:icon="@drawable/icon" a:label="@string/app_name" a:name=".ImageLoaderTesterApplication">
         <activity a:name=".ImageLoaderTestActivity" a:theme="@android:style/Theme.NoTitleBar">

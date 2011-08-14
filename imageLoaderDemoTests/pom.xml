@@ -5,31 +5,29 @@
 	<parent>
 		<groupId>com.novoda</groupId>
 		<artifactId>robotium</artifactId>
-		<version>0.1.1</version>
+		<version>0.1.2</version>
 		<relativePath></relativePath>
 	</parent>
 	<groupId>com.novoda.lib</groupId>
 	<artifactId>imageloaderdemotests</artifactId>
-	<version>0.1.1</version>
+	<version>0.1.2-SNAPSHOT</version>
 	<packaging>apk</packaging>
 	<name>Image Loader Demo Tests</name>
-
-	<repositories>
-		<repository>
-			<id>public-mvn-repo-snapshots</id>
-			<url>https://github.com/novoda/public-mvn-repo/raw/master/snapshots</url>
-		</repository>
-		<repository>
-			<id>public-mvn-repo-releases</id>
-			<url>https://github.com/novoda/public-mvn-repo/raw/master/releases</url>
-		</repository>
-	</repositories>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.novoda.lib</groupId>
 			<artifactId>imageloadertester</artifactId>
 			<version>0.1.2-SNAPSHOT</version>
+			<scope>provided</scope>
+			<type>apk</type>
+		</dependency>
+		<dependency>
+			<groupId>com.novoda.lib</groupId>
+			<artifactId>imageloadertester</artifactId>
+			<version>0.1.2-SNAPSHOT</version>
+			<scope>provided</scope>
+			<type>jar</type>
 		</dependency>
 	</dependencies>
 

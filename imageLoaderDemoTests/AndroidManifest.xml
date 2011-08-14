@@ -4,9 +4,9 @@
       android:versionCode="1"
       android:versionName="1.0">
     <uses-sdk android:minSdkVersion="8" />
+    <uses-sdk android:targetSdkVersion="8" />
     <instrumentation android:targetPackage="com.novoda.lib.imageloadertester" android:name="android.test.InstrumentationTestRunner" />
     <application android:icon="@drawable/icon" android:label="@string/app_name">
-
     <uses-library android:name="android.test.runner" />
     </application>
 </manifest>
