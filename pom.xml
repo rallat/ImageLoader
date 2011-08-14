@@ -3,13 +3,19 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.novoda.lib</groupId>
-	<version>0.1.0</version>
+	<version>0.1.0-SNAPSHOT</version>
 	<artifactId>imageloaderglobal</artifactId>
 	<packaging>pom</packaging>
 	<name>Image Loader Global</name>
 	<description>Image Loader Global</description>
+
+	<scm>
+		<connection>scm:git:git@github.com:novoda/ImageLoader.git</connection>
+		<url>scm:git:git@github.com:novoda/ImageLoader.git</url>
+		<developerConnection>scm:git:git@github.com:novoda/ImageLoader.git</developerConnection>
+	</scm>
 	
-	<modules>
+	<modules>	
 		<module>imageLoader</module>
 		<module>imageLoaderTester</module>
 		<module>imageLoaderDemoTests</module>
