@@ -2,8 +2,10 @@ package com.novoda.lib.imageloader.file;
 
 import java.io.Closeable;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
@@ -13,6 +15,8 @@ import android.util.Log;
 public class FileUtil {
 	
 	private static final String TAG = "ImageLoader";
+	
+	private static final String NOMEDIA_FILE_NAME = ".nomedia"; 
 	
 	public void retrieveImage(String url, File f) {
 		InputStream is = null;
@@ -76,4 +80,40 @@ public class FileUtil {
         return true;
     }
 	
+	public boolean isMounted() {
+		if (android.os.Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED)){
+			return true;
+		}
+		return false;
+	}
+	
+	public File getExternalStorageDirectory() {
+		return android.os.Environment.getExternalStorageDirectory();
+	}
+	
+	public void createNomediaFile(File dir) {
+	  try {
+	    new File(dir, NOMEDIA_FILE_NAME).createNewFile();
+	  } catch (Exception e) {
+	  }
+	}
+	
+	public void copy(File src, File dst) {
+		InputStream in = null;
+		OutputStream out = null;  
+		try {
+		    in = new FileInputStream(src);
+		    out = new FileOutputStream(dst);
+		    byte[] buf = new byte[1024];
+		    int len;
+		    while ((len = in.read(buf)) > 0) {
+		        out.write(buf, 0, len);
+		    }
+		} catch (IOException e) {
+			throw new RuntimeException();
+		} finally {
+			closeSilently(out); 
+			closeSilently(in);
+		}
+	}
 }

@@ -3,6 +3,8 @@ package com.novoda.lib.imageloader;
 import java.io.File;
 import java.lang.ref.SoftReference;
 
+import com.novoda.lib.imageloader.file.FileUtil;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -85,6 +87,7 @@ public class Settings {
 		}
 		if(!cacheDir.exists()){
 			cacheDir.mkdirs();
+			new FileUtil().createNomediaFile(cacheDir);
 		}
 		return cacheDir;
 	}

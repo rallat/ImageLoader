@@ -27,7 +27,6 @@ public class BaseImageLoader implements ImageManager {
 		this.settings = settings;
 		this.cacheManager = new CacheManager(this, createCache(),
 				bitmapUtil.decodeImageResourceAndScaleBitmap(context, settings));
-		sendCacheCleanUpBroadcast(context, settings.getExpirationPeriod());
 	}
 
 	@Override
@@ -50,12 +49,20 @@ public class BaseImageLoader implements ImageManager {
 	public Bitmap getBitmap(String url) {
 		return getBitmap(url, false);
 	}
+	
+	@Override
+	public String getFilePath(String imageUrl) {
+		File f = getFile(imageUrl);
+		if(f.exists()) {
+			return f.getAbsolutePath();	
+		}
+		return null;
+	}
 
 	@Override
 	public Bitmap getBitmap(String url, boolean scale) {
 		if (url != null && url.length() >= 0) {
-			String filename = String.valueOf(url.hashCode());
-			File f = new File(settings.getCacheDir(), filename);
+			File f = getFile(url);
 			if (f.exists()) {
 				Bitmap b = bitmapUtil.decodeFileAndScale(f, scale, settings);
 				if (b != null) {
@@ -66,6 +73,12 @@ public class BaseImageLoader implements ImageManager {
 			return bitmapUtil.decodeFileAndScale(f, scale, settings);
 		}
 		return null;
+	}
+	
+	private File getFile(String url) {
+		String filename = String.valueOf(url.hashCode());
+		File f = new File(settings.getCacheDir(), filename + ".jpg");
+		return f;
 	}
 
 	@Override
@@ -91,6 +104,7 @@ public class BaseImageLoader implements ImageManager {
 	private void sendCacheCleanUpBroadcast(Context context, long expirationPeriod) {
 		String path = settings.getCacheDir().getAbsolutePath();
 		Intent i = CacheCleaner.getCleanCacheIntent(path, expirationPeriod);
+		i.setPackage(context.getPackageName());
 		context.sendBroadcast(i);
 	}
 

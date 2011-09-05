@@ -18,4 +18,6 @@ public interface ImageManager {
 
 	void reduceFileCache(Context context);
 
+	String getFilePath(String imageUrl);
+
 }

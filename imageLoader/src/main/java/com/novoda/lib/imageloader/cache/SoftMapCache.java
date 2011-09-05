@@ -7,7 +7,7 @@ import android.graphics.Bitmap;
 
 public class SoftMapCache implements ImageCache {
 
-	private static HashMap<String, SoftReference<Bitmap>> cache = new HashMap<String, SoftReference<Bitmap>>();
+	private HashMap<String, SoftReference<Bitmap>> cache = new HashMap<String, SoftReference<Bitmap>>();
 	
 	@Override
 	public boolean hasImage(String url) {

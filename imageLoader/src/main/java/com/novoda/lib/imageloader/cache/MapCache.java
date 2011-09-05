@@ -6,7 +6,7 @@ import android.graphics.Bitmap;
 
 public class MapCache implements ImageCache {
 
-	private static HashMap<String, Bitmap> cache = new HashMap<String, Bitmap>();
+	private HashMap<String, Bitmap> cache = new HashMap<String, Bitmap>();
 
 	@Override
 	public boolean hasImage(String url) {

@@ -43,7 +43,11 @@ public class CacheCleaner extends BroadcastReceiver {
 			}
 			if(CLEAN_CACHE_ACTION.equals(action)) {
 				long exipiredPeriod = intent.getLongExtra(EXPIRATION_PERIOD_EXTRA, -1);
-				new FileUtil().reduceFileCache(cacheDir, exipiredPeriod);
+				try {
+					new FileUtil().reduceFileCache(cacheDir, exipiredPeriod);
+				} catch(Throwable t) {
+					//Don't have to fail in case there 
+				}
 			}
 		}
 	}
