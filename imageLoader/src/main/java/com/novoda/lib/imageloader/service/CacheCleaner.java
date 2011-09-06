@@ -1,14 +1,14 @@
-package com.novoda.lib.imageloader.receiver;
+package com.novoda.lib.imageloader.service;
 
-import android.content.BroadcastReceiver;
+import android.app.IntentService;
 import android.content.Context;
 import android.content.Intent;
 
 import com.novoda.lib.imageloader.file.FileUtil;
 
-public class CacheCleaner extends BroadcastReceiver {
+public class CacheCleaner extends IntentService {
 
-	public static final String CLEAN_CACHE_ACTION = "com.novoda.lib.imageloader.action.CLEAN_CACHE";
+  public static final String CLEAN_CACHE_ACTION = "com.novoda.lib.imageloader.action.CLEAN_CACHE";
 	public static final String EXPIRATION_PERIOD_EXTRA = "com.novoda.lib.imageloader.extra.EXPIRATION_PERIOD";
 	public static final String CACHE_DIR_EXTRA = "com.novoda.lib.imageloader.extra.CACHE_DIR";
 	
@@ -19,10 +19,18 @@ public class CacheCleaner extends BroadcastReceiver {
 		return i;
 	}
 	
-	@Override
-    public void onReceive(Context c, Intent i) {
-		new CacheCleanerUtil().onReceive(c, i);
+	public CacheCleaner() {
+	  this("CacheCleaner");
 	}
+	
+	public CacheCleaner(String name) {
+    super(name);
+  }
+
+	@Override
+  protected void onHandleIntent(Intent intent) {
+	  new CacheCleanerUtil().onReceive(this, intent);    
+  }
 	
 	/*package*/ static class CacheCleanerUtil {
 		
@@ -51,5 +59,5 @@ public class CacheCleaner extends BroadcastReceiver {
 			}
 		}
 	}
-	
+
 }

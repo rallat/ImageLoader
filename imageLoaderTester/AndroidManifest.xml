@@ -18,15 +18,14 @@
          	a:name=".provider.ImageLoaderTestProvider"
          	a:authorities="com.novoda.imageloadertest" />
 
-		<receiver a:name="com.novoda.lib.imageloader.receiver.CacheCleaner">
+		<service a:name="com.novoda.lib.imageloader.service.CacheCleaner" a:exported="true">
 			<intent-filter>
                 <action a:name="com.novoda.lib.imageloader.action.REDUCE_CACHE" />
             </intent-filter>
             <intent-filter>
                 <action a:name="com.novoda.lib.imageloader.action.CLEAN_CACHE" />
             </intent-filter>
-		</receiver>
-
+		</service>
     </application>
     
     <uses-permission a:name="android.permission.WRITE_EXTERNAL_STORAGE" />

@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import com.novoda.lib.imageloader.cache.ImageCache;
 import com.novoda.lib.imageloader.cache.SoftMapCache;
 import com.novoda.lib.imageloader.file.FileUtil;
-import com.novoda.lib.imageloader.receiver.CacheCleaner;
+import com.novoda.lib.imageloader.service.CacheCleaner;
 import com.novoda.lib.imageloader.util.BitmapUtil;
 
 public class BaseImageLoader implements ImageManager {
@@ -105,7 +105,7 @@ public class BaseImageLoader implements ImageManager {
 		String path = settings.getCacheDir().getAbsolutePath();
 		Intent i = CacheCleaner.getCleanCacheIntent(path, expirationPeriod);
 		i.setPackage(context.getPackageName());
-		context.sendBroadcast(i);
+		context.startService(i);
 	}
 
 }
