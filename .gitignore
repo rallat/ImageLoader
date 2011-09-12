@@ -8,3 +8,4 @@
 **/*.pydevproject
 .project
 release.properties
+target
