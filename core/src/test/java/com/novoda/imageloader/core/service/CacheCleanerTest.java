@@ -123,7 +123,7 @@ public class CacheCleanerTest {
 
   @Before
   public void setUp() {
-    cacheDir = new File("tmp");
+    cacheDir = new File("target/unit-test/tmp");
     cacheDir.mkdir();
     cacheCleaner = new CacheCleanerUtil();
     intent = prepareStandardIntent();
