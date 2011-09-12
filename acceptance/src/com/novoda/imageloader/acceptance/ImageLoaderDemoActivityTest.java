@@ -1,13 +1,13 @@
-package com.novoda.lib.imageloadertester.test;
+package com.novoda.imageloader.acceptance;
 
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.LargeTest;
 import android.widget.ListView;
 
 import com.jayway.android.robotium.solo.Solo;
-import com.novoda.lib.imageloadertester.ImageLoaderTestActivity;
+import com.novoda.imageloader.demo.ImageLoaderDemoActivity;
 
-public class ImageLoaderTestActivityTest extends ActivityInstrumentationTestCase2<ImageLoaderTestActivity>{
+public class ImageLoaderDemoActivityTest extends ActivityInstrumentationTestCase2<ImageLoaderDemoActivity>{
 
 	private static final int QUICK = 2;
 	private static final int NORMAL = 7;
@@ -15,8 +15,8 @@ public class ImageLoaderTestActivityTest extends ActivityInstrumentationTestCase
 	private Solo robotium;
 	private ListView list;
 
-	public ImageLoaderTestActivityTest() {
-		super("com.novoda.lib.imageloadertester",ImageLoaderTestActivity.class);
+	public ImageLoaderDemoActivityTest() {
+		super("com.novoda.imageloader.demo", ImageLoaderDemoActivity.class);
 	}
 	
 	@Override
