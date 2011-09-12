@@ -1,11 +1,19 @@
+=========================================================
+General information
+=========================================================
 ImageLoader component
-- imageLoader contains a java maven based project
-- imageLoaderTest mvn android based project to test imageLoader
-- imageLoaderDemoTest mvn android based project with robotium test
-- imageLoaderMonkeyRunner some example that take a snapshot using monkey runner
+- core contains a java maven based project
+- demo mvn android based project to test imageLoader
+- acceptance mvn android based project with robotium test
+- monkey some example that take a snapshot using monkey runner
 
 For client project that need to include the image loader you just need the jar
 you can find the jar at : https://github.com/novoda/public-mvn-repo 
+
+
+=========================================================
+How to use the library
+=========================================================
 
 If you are using maven you need to define the repo and then the dependency
 <repositories>
@@ -20,23 +28,17 @@ If you are using maven you need to define the repo and then the dependency
 </repositories>
 
 <dependency>
-  <groupId>com.novoda.lib</groupId>
-  <artifactId>imageloader</artifactId>
-  <version>0.1.0</version>
+  <groupId>com.novoda.imageloader.core</groupId>
+  <artifactId>imageloader-core</artifactId>
+  <version>1.3.3</version>
 </dependency>
 
+=========================================================
 Working with eclipse
-REQUIREMENTS 
-- better to use eclipse 3.7 and maven 3.0.3
-- Download from eclipse marketplace the maven eclipse integration (m2e) [alternatively go to http://download.eclipse.org/technology/m2e/releases]
+=========================================================
 
-- import existing maven project and select the root of the project
-
-
-Eclipsify is not longer necessary but if you want these are the steps
-- execute the following command in the root of the project : mvn clean eclipse:clean eclipse:eclipse install
-- from eclipse select File > Import > Existing Projects into workspace > select the root of the project (should import both of them) 
-- for the android imageLoaderTester you need three more steps:
-   - remove the folder target/generated-sources/r from the classpath
-   - add gen folder to the classpath
-   - on properties of the project select android tools > fix android setup 
+better to use eclipse 3.7 and maven 3.0.3
+import core as maven project
+for acceptance and demo :
+- run : mvn clean package
+- create a new android project in eclipse

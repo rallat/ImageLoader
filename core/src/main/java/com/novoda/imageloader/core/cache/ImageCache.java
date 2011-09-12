@@ -11,5 +11,9 @@ public interface ImageCache {
   void put(String url, Bitmap bmp);
 
   void clean();
+  
+  Bitmap getDefaultImage();
+  
+  void setDefaultImage(Bitmap defaultImage);
 
 }

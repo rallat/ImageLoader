@@ -46,8 +46,9 @@ public class BitmapUtil {
   }
 
   public Bitmap decodeImageResourceAndScaleBitmap(Context context, Settings settings) {
-    return scaleBitmap(settings.getDefaultBitmap(context), settings.getImageWidth(),
-        settings.getImageHeight());
+    Bitmap image = BitmapFactory.decodeResource(context.getResources(),
+        settings.getDefaultImageId());
+    return scaleBitmap(image, settings.getImageWidth(), settings.getImageHeight());
   }
 
 }

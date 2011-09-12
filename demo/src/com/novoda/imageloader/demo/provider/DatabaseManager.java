@@ -1,4 +1,4 @@
-package com.novoda.lib.imageloadertester.provider;
+package com.novoda.imageloader.demo.provider;
 
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
 	private Context context;
 
 	public DatabaseManager(Context context) {
-		super(context, "com.novoda.imageloadertest", null, 13);
+		super(context, "com.novoda.imageloaderdemo", null, 13);
 		this.context = context;
 	}
 

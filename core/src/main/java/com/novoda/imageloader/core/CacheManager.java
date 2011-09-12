@@ -15,7 +15,6 @@ public class CacheManager {
   private static final String TAG = "ImageLoader";
 
   private ImageCache cache;
-  private Bitmap defaultImage;
   private PhotosLoader thread;
   private Stack<Image> stack;
   private ImageManager imageLoader;
@@ -30,17 +29,16 @@ public class CacheManager {
     }
   }
 
-  public CacheManager(ImageManager imageLoader, ImageCache cache, Bitmap defaultImage) {
+  public CacheManager(ImageManager imageLoader, ImageCache cache) {
     this.imageLoader = imageLoader;
     this.cache = cache;
-    this.defaultImage = defaultImage;
     this.stack = new Stack<Image>();
     thread = new PhotosLoader();
     thread.setPriority(Thread.NORM_PRIORITY - 1);
   }
 
   public void push(Image p) {
-    p.imageView.setImageBitmap(defaultImage);
+    p.imageView.setImageBitmap(cache.getDefaultImage());
     if (TextUtils.isEmpty(p.url)) {
       return;
     }
@@ -103,7 +101,7 @@ public class CacheManager {
           Image image = stack.pop();
           Bitmap bmp = imageLoader.getBitmap(image.url, true);
           if (bmp == null) {
-            bmp = defaultImage;
+            bmp = cache.getDefaultImage();
             clean(image);
           } else {
             cache.put(image.url, bmp);
@@ -136,7 +134,7 @@ public class CacheManager {
       if (bitmap != null) {
         imageView.setImageBitmap(bitmap);
       } else {
-        imageView.setImageBitmap(defaultImage);
+        imageView.setImageBitmap(cache.getDefaultImage());
       }
     }
   }
@@ -152,4 +150,5 @@ public class CacheManager {
   public void resetCache(ImageCache cache) {
     this.cache.clean();
   }
+
 }

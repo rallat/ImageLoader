@@ -8,9 +8,9 @@ import com.novoda.imageloader.core.file.FileUtil;
 
 public class CacheCleaner extends IntentService {
 
-  public static final String CLEAN_CACHE_ACTION = "com.novoda.lib.imageloader.action.CLEAN_CACHE";
-	public static final String EXPIRATION_PERIOD_EXTRA = "com.novoda.lib.imageloader.extra.EXPIRATION_PERIOD";
-	public static final String CACHE_DIR_EXTRA = "com.novoda.lib.imageloader.extra.CACHE_DIR";
+  public static final String CLEAN_CACHE_ACTION = "com.novoda.imageloader.core.action.CLEAN_CACHE";
+	public static final String EXPIRATION_PERIOD_EXTRA = "com.novoda.imageloader.core.extra.EXPIRATION_PERIOD";
+	public static final String CACHE_DIR_EXTRA = "com.novoda.imageloader.core.extra.CACHE_DIR";
 	
 	public static final Intent getCleanCacheIntent(String directoryFullPath, long expirationPeriod) {
 		Intent i = new Intent(CLEAN_CACHE_ACTION);

@@ -1,4 +1,4 @@
-package com.novoda.lib.imageloadertester.provider;
+package com.novoda.imageloader.demo.provider;
 
 import android.content.UriMatcher;
 import android.net.Uri;

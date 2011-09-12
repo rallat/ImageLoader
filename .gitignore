@@ -3,5 +3,8 @@
 **/libs
 **.settings
 **/target
+**/bin
+**/gen
 **/*.pydevproject
 .project
+release.properties

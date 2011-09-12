@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 public class MapCache implements ImageCache {
 
   private HashMap<String, Bitmap> cache = new HashMap<String, Bitmap>();
+  private Bitmap defaultImage;
 
   @Override
   public boolean hasImage(String url) {
@@ -28,4 +29,14 @@ public class MapCache implements ImageCache {
     cache.clear();
   }
 
+  @Override
+  public Bitmap getDefaultImage() {
+    return defaultImage;
+  }
+
+  @Override
+  public void setDefaultImage(Bitmap defaultImage) {
+    this.defaultImage = defaultImage;
+  }
+  
 }

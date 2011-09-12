@@ -1,4 +1,4 @@
-package com.novoda.lib.imageloadertester;
+package com.novoda.imageloader.demo;
 
 import android.app.ListActivity;
 

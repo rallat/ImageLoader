@@ -25,8 +25,7 @@ public class BaseImageLoader implements ImageManager {
   public BaseImageLoader(Context context, Settings settings) {
     this.bitmapUtil = new BitmapUtil();
     this.settings = settings;
-    this.cacheManager = new CacheManager(this, createCache(),
-        bitmapUtil.decodeImageResourceAndScaleBitmap(context, settings));
+    this.cacheManager = new CacheManager(this, initCache(context, settings));
   }
 
   @Override
@@ -97,9 +96,17 @@ public class BaseImageLoader implements ImageManager {
   }
 
   protected ImageCache createCache() {
+    //TODO default image ?
     return new SoftMapCache();
   }
 
+  private ImageCache initCache(Context context, Settings settings) {
+    Bitmap b = bitmapUtil.decodeImageResourceAndScaleBitmap(context, settings);
+    ImageCache cache = createCache();
+    cache.setDefaultImage(b);
+    return cache;
+  }
+  
   private void sendCacheCleanUpBroadcast(Context context, long expirationPeriod) {
     String path = settings.getCacheDir().getAbsolutePath();
     Intent i = CacheCleaner.getCleanCacheIntent(path, expirationPeriod);
