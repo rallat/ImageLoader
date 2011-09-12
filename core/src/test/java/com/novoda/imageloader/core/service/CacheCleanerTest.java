@@ -17,6 +17,7 @@ import org.mockito.Mockito;
 import android.content.Context;
 import android.content.Intent;
 
+import com.novoda.imageloader.core.Util;
 import com.novoda.imageloader.core.service.CacheCleaner;
 import com.novoda.imageloader.core.service.CacheCleaner.CacheCleanerUtil;
 
@@ -123,7 +124,7 @@ public class CacheCleanerTest {
 
   @Before
   public void setUp() {
-    cacheDir = new File("target/unit-test/tmp");
+    cacheDir = new File(Util.FOLDER_FOR_TEST_TMP_FILES);
     cacheDir.mkdir();
     cacheCleaner = new CacheCleanerUtil();
     intent = prepareStandardIntent();

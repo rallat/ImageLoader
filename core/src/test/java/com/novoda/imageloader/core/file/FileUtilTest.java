@@ -13,6 +13,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.novoda.imageloader.core.Util;
 import com.novoda.imageloader.core.file.FileUtil;
 
 public class FileUtilTest {
@@ -22,7 +23,7 @@ public class FileUtilTest {
 	
 	@Before 
 	public void before() {
-		cacheDir = new File("tmp");
+		cacheDir = new File(Util.FOLDER_FOR_TEST_TMP_FILES);
 		cacheDir.mkdirs();
 	}
 	
