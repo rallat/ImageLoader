@@ -15,11 +15,11 @@ import android.widget.SimpleCursorAdapter.ViewBinder;
 
 import com.novoda.imageloader.core.ImageManager;
 
-public class ImageLoaderDemoActivity extends BaseListActivity {
+public class ImageLoaderDemoWithMeaninglessQueryActivity extends BaseListActivity {
 
   private static final String[] FROM = new String[] { "url" };
   private static final int[] TO = new int[] { R.id.list_item_image };
-  private static final Uri URI = Uri.parse("content://com.novoda.imageloader.demo/image");
+  private static final Uri URI = Uri.parse("content://com.novoda.imageloader.demo/imagewithmeaninglessquery");
 
   // TODO add this to your class
   private ImageManager imageLoader;
@@ -30,7 +30,7 @@ public class ImageLoaderDemoActivity extends BaseListActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.main);
     // TODO add this to your class
-    imageLoader = ImageLoaderDemoApplication.getImageLoader();
+    imageLoader = ImageLoaderDemoApplication.getImageLoaderWithQueryRemoved();
     //
     setAdapter();
     setNewActivityButton();
@@ -46,7 +46,7 @@ public class ImageLoaderDemoActivity extends BaseListActivity {
         try {
           ((ImageView) view).setTag(cursor.getString(columnIndex));
           // TODO add this to your class
-          imageLoader.load(cursor.getString(columnIndex), ImageLoaderDemoActivity.this,
+          imageLoader.load(cursor.getString(columnIndex), ImageLoaderDemoWithMeaninglessQueryActivity.this,
               (ImageView) view);
           //
         } catch (Exception e) {
@@ -110,7 +110,7 @@ public class ImageLoaderDemoActivity extends BaseListActivity {
     newActivity.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        startActivity(new Intent(ImageLoaderDemoActivity.this, ImageLoaderDemoActivity.class));
+        startActivity(new Intent(ImageLoaderDemoWithMeaninglessQueryActivity.this, ImageLoaderDemoWithMeaninglessQueryActivity.class));
       }
     });
   }

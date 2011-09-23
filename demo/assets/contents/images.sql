@@ -187,6 +187,11 @@ insert into image(url) values ("https://lh5.googleusercontent.com/-KvYOuA4tQ_8/S
 insert into image(url) values ("https://lh5.googleusercontent.com/-ciuSedn477E/SdO_xjWXe_I/AAAAAAAAA3c/7XuVskHwoLA/AddEmoticons126140.jpg");
 
 
+insert into imagewithmeaninglessquery(url) values ("http://farm4.static.flickr.com/3606/3684282839_cf49bc36c7.jpg");
+insert into imagewithmeaninglessquery(url) values ("http://farm4.static.flickr.com/3606/3684282839_cf49bc36c7.jpg?test=xxx");
+insert into imagewithmeaninglessquery(url) values ("http://farm4.static.flickr.com/3606/3684282839_cf49bc36c7.jpg?test=xxx&tes1=tres");
+
+
 
 
 

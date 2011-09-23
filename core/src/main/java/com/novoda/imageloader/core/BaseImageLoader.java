@@ -13,11 +13,13 @@ import com.novoda.imageloader.core.cache.SoftMapCache;
 import com.novoda.imageloader.core.file.FileUtil;
 import com.novoda.imageloader.core.service.CacheCleaner;
 import com.novoda.imageloader.core.util.BitmapUtil;
+import com.novoda.imageloader.core.util.UrlUtil;
 
 public class BaseImageLoader implements ImageManager {
 
   private static final String TAG = "ImageLoader";
 
+  private UrlUtil urlUtil = new UrlUtil();
   private BitmapUtil bitmapUtil;
   private CacheManager cacheManager;
   private Settings settings;
@@ -75,8 +77,16 @@ public class BaseImageLoader implements ImageManager {
   }
 
   private File getFile(String url) {
+    url = processUrl(url);
     String filename = String.valueOf(url.hashCode());
     return new File(settings.getCacheDir(), filename + ".jpg");
+  }
+  
+  protected String processUrl(String url) {
+    if(!settings.isQueryIncludedInHash()) {      
+      return url;
+    }
+    return urlUtil.removeQuery(url);
   }
 
   @Override
@@ -96,7 +106,6 @@ public class BaseImageLoader implements ImageManager {
   }
 
   protected ImageCache createCache() {
-    //TODO default image ?
     return new SoftMapCache();
   }
 

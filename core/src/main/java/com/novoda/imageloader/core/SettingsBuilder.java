@@ -15,15 +15,20 @@ public class SettingsBuilder {
     settings = new Settings();
   }
 
-  public SettingsBuilder setImageSize(int height, int width) {
+  public SettingsBuilder imageSize(int height, int width) {
     settings.setImageHeight(height);
     settings.setImageWidth(width);
     isSizeSet = true;
     return this;
   }
   
-  public SettingsBuilder setDefaultImageId(int defaultImageId) {
+  public SettingsBuilder defaultImageId(int defaultImageId) {
     settings.setDefaultImageId(defaultImageId);
+    return this;
+  }
+  
+  public SettingsBuilder enableQueryInHashGeneration(boolean enableQueryInHashGeneration) {
+    settings.setQueryIncludedInHash(enableQueryInHashGeneration);
     return this;
   }
 
@@ -41,4 +46,5 @@ public class SettingsBuilder {
     settings.setImageHeight(display.getHeight());
     settings.setImageWidth(display.getWidth());
   }
+  
 }

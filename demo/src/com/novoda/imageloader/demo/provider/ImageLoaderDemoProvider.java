@@ -29,6 +29,10 @@ public class ImageLoaderDemoProvider extends ContentProvider {
       type = CustomUriMatcher.IMAGE_COLLECTION_TYPE;
       break;
     }
+    case CustomUriMatcher.IMAGE_WITHMEANINGLESSQUERY_INCOMING_COLLECTION: {
+      type = CustomUriMatcher.IMAGE_WITHMEANINGLESSQUERY_COLLECTION_TYPE;
+      break;
+    }
     default: {
       Log.e("ImageLoader", "Problem with query, not Implemented for : " + uri);
       throw new RuntimeException("Problem with query, not Implemented for : " + uri);
@@ -59,6 +63,11 @@ public class ImageLoaderDemoProvider extends ContentProvider {
     switch (matcher.match(uri)) {
     case CustomUriMatcher.IMAGE_INCOMING_COLLECTION: {
       cursor = getDataBase().query("image", projection, selection, selectionArgs, null, null,
+          sortOrder);
+      break;
+    }
+    case CustomUriMatcher.IMAGE_WITHMEANINGLESSQUERY_INCOMING_COLLECTION: {
+      cursor = getDataBase().query("imagewithmeaninglessquery", projection, selection, selectionArgs, null, null,
           sortOrder);
       break;
     }

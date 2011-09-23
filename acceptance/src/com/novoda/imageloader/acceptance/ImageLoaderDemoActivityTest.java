@@ -31,8 +31,7 @@ public class ImageLoaderDemoActivityTest extends ActivityInstrumentationTestCase
 		assertNotNull(robotium);
 	}
 	
-	@LargeTest
-	public void ignore_testScrollingDownToBottomAndBackToTopQuickly(){
+	public void testScrollingDownToBottomAndBackToTopQuickly(){
 		try{
 			scrollToBottom(QUICK);
 			scrollToTop(QUICK);

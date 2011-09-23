@@ -13,9 +13,11 @@
         <category a:name="android.intent.category.LAUNCHER" />
       </intent-filter>
     </activity>
+    
+    <activity a:name=".ImageLoaderDemoWithMeaninglessQueryActivity" a:theme="@android:style/Theme.NoTitleBar" />
 
     <provider a:name=".provider.ImageLoaderDemoProvider"
-      a:authorities="com.novoda.imageloaderdemo" />
+      a:authorities="com.novoda.imageloader.demo" />
 
     <service a:name="com.novoda.imageloader.core.service.CacheCleaner"
       a:exported="true">
