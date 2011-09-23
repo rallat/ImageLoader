@@ -31,7 +31,7 @@
     <repository>
       <id>local-public-mvn-repo</id>
       <name>local clone of https://github.com/novoda/public-mvn-repo</name>
-      <url>file:/home/luigi/dev/prj/com.novoda/public-mvn-repo/releases</url>
+      <url>${local.public.mvn.repo}</url>
     </repository>
   </distributionManagement>
 
@@ -44,7 +44,7 @@
   <licenses>
     <license>
       <name>Apache 2.0</name>
-      <url>LICENSE.txt</url>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
     </license>
   </licenses>
 
@@ -64,10 +64,6 @@
           <useReleaseProfile>false</useReleaseProfile>
         </configuration>
       </plugin>
-      <!-- I need this to intercept the release and update the android manifests 
-        accordingly example <plugin> <artifactId>maven-release-plugin</artifactId> 
-        <configuration> <autoVersionSubmodules>true</autoVersionSubmodules> <useReleaseProfile>false</useReleaseProfile> 
-        <arguments>-P release</arguments> <goals /> </configuration> </plugin> -->
     </plugins>
   </build>
 

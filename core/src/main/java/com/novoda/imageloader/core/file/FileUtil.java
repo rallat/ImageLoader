@@ -111,6 +111,14 @@ public class FileUtil {
     return dir;
   }
   
+  public boolean isMounted() {
+    if (android.os.Environment.getExternalStorageState().equals(
+        android.os.Environment.MEDIA_MOUNTED)) {
+      return true;
+    }
+    return false;
+  }
+  
   private File prepareExternalCacheDir(Context context) {
     String relativepath = context.getPackageName() + DEFAULT_IMAGE_FOLDER_NAME;
     File file = new File(android.os.Environment.getExternalStorageDirectory(), relativepath);
@@ -124,14 +132,6 @@ public class FileUtil {
     return context.getCacheDir();
   }
 
-  private boolean isMounted() {
-    if (android.os.Environment.getExternalStorageState().equals(
-        android.os.Environment.MEDIA_MOUNTED)) {
-      return true;
-    }
-    return false;
-  }
-  
   private void addNomediaFile(File dir) {
     try {
       new File(dir, NOMEDIA_FILE_NAME).createNewFile();
