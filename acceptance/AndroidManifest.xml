@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:a="http://schemas.android.com/apk/res/android"
-  package="com.novoda.imageloader.acceptance" a:versionCode="1"
-  a:versionName="1.0">
+  package="com.novoda.imageloader.acceptance" a:versionCode="2"
+  a:versionName="1.3.5">
   <uses-sdk a:minSdkVersion="8" />
   <uses-sdk a:targetSdkVersion="8" />
   <instrumentation a:targetPackage="com.novoda.imageloader.demo"
